@@ -1,18 +1,16 @@
 // Assignment Code
 // Target generates ID
-var generateBtn = document.querySelector("#generate"); {
+var generateBtn = document.querySelector("#generate"); 
+  var numbers = "0123456789";
+  var lowerCase = "abcdefghiklmnopqrstuvwxyz";
+  var upperCase = "ABCDEFGHIJKLMOPQRSTUVWXYZ";
+  var specialChars = "!@#$%^&*()_+~-./:;<=>?[`|";
 
-  var numbers = "0123456789".split("");
-  var lowerCase = "abcdefghiklmnopqrstuvwxyz".split("");
-  var upperCase = "ABCDEFGHIJKLMOPQRSTUVWXYZ".split("");
-  var specialChars = "!@#$%^&*()_+~-./:;<=>?[`|".split("");
-}
-  var password = document.getElementById("password");
+// calling on function to generate passwordd
   function generatePassword() {
-  var charsToUse = "";
-
+// sets charsToUse to open or empty so that user can put in number of characters and password
+    var charsToUse = "";
   var password = "";
-  
 // creates user prompt to select password length
  // Prompt by window to get length of password
 let passwordLength = window.prompt("Length of password must be between 8 and 128 characters");
@@ -21,49 +19,43 @@ let passwordLength = window.prompt("Length of password must be between 8 and 128
         return "generate password";
       }
 //  Canceling ends generator
-
 if (passwordLength < 8 || passwordLength > 128) {
   window.alert("The password must be between 8 and 128 characters");
   return;
 }
-}
-// Next 4 steps creates a confirm boolean, yes or no, or else
-var lowerCase = window.confirm("please add some lower case letters");
-if (lowerCase) {
-  password += lowerCase
-} else { window.alert("you would not like to do lower case letters?")}
 
+// Next 4 steps creates a confirm boolean, yes or no
+var lowerPrompt = window.confirm("please add some lower case letters");
+if (lowerPrompt) {
+  charsToUse += lowerCase
+} 
 
-var upperCase = window.confirm("please add some upper case letters");
-if (upperCase) {
-  password += upperCase
-} else { window.alert("you would not like to do upper case letters?")}
+var upperPrompt = window.confirm("please add some upper case letters");
+if (upperPrompt) {
+  charsToUse += upperCase
+} 
 
-var numbers = window.confirm("please add some numbers");
-if (numbers) {
-  password += numbers
-} else { window.alert("you would not like to add numbers?")}
+var numbersPrompt = window.confirm("please add some numbers");
+if (numbersPrompt) {
+  charsToUse += numbers
+} 
 
-var lowerCase = window.confirm("please add some special characters");
-if (specialChars) {
-  password += specialChars
-} else { window.alert("you would not like to do special characters?")}
-
-
-// randomizes characters in password and makes them whole numbers
- for (var i = 0; i <= passwordLength; i++) {
+var specialPrompt = window.confirm("please add some special characters");
+if (specialPrompt) {
+  charsToUse += specialChars
+} 
+// logs to console the characters to use
+console.log(charsToUse)
+// randomizes characters in password 
+ for (let i = 0; i < passwordLength; i++) {
    var randomNumber = Math.floor(Math.random() * charsToUse.length);
    password += charsToUse.substring(randomNumber,randomNumber +1);
 
  }
  return password;
-
-
-
-
+}
 
 // Write password to the #password input -- calls password function
-
 function writePassword() {
   // Stores generated password in password
   var password = generatePassword();
@@ -73,8 +65,5 @@ function writePassword() {
   passwordText.value = password;
 
 }
-
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
-
