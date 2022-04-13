@@ -18,7 +18,7 @@ https://github.com/efurness/Unit3-JavaScript--Password-Generator.git
 
 ## Contact
 
-Ellen Furness - [Ellen.Furness@du.edu]
+Ellen F.
 
 ## Acknowledgments
 
